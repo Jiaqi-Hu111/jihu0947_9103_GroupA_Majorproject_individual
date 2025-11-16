@@ -20,10 +20,14 @@ I add independent size pulses and transparency pulses to each circle.
 I use millis() to add a horizontal sway and to make each ring rotate slightly as it falls.
 In general, the time-based animation effects are enriched on the basis of group work, forming different visual feelings.
 ## Animation Inspiration
+
 - Harmonic Motion & Oscillation
+
 The entire time-based animation is inspired by harmonic motion, where sine waves create gentle oscillations over time. This regular motion is added to the animation of the canvas and the circles themselves to create a rhythmic visual effect.
 ![Image of the harmonic motion](./README_Images/harmonic_motion.gif)
+
 - Breathing Circle
+
 The pulsing size changes and transparency fluctuations of each ring are inspired by the breathing circle image, where smooth scaling represents inhale–exhale cycles. This guides my decision to animate radius and transparency using periodic sine-wave motion.
 ![Image of the breathing circle](./README_Images/breath_circle.gif)
 ## Technical Explanation
