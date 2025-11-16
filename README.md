@@ -29,7 +29,7 @@ In general, the time-based animation effects are enriched on the basis of group 
 
 - Harmonic Motion & Oscillation
 
-The entire time-based animation is inspired by harmonic motion, where sine waves create gentle oscillations over time. This regular motion is added to the animation of the canvas and the circles themselves to create a rhythmic visual effect.
+The entire time-based animation is inspired by harmonic motion(y = A * sin(ωt + φ)), where sine waves create gentle oscillations over time. This regular motion is added to the animation of the canvas and the circles themselves to create a rhythmic visual effect.
 
 ![Image of the harmonic motion](./README_Images/harmonic_motion.gif)
 
