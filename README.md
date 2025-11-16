@@ -30,11 +30,13 @@ In general, the time-based animation effects are enriched on the basis of group 
 - Harmonic Motion & Oscillation
 
 The entire time-based animation is inspired by harmonic motion, where sine waves create gentle oscillations over time. This regular motion is added to the animation of the canvas and the circles themselves to create a rhythmic visual effect.
+
 ![Image of the harmonic motion](./README_Images/harmonic_motion.gif)
 
 - Breathing Circle
 
 The pulsing size changes and transparency fluctuations of each ring are inspired by the breathing circle image, where smooth scaling represents inhale–exhale cycles. This guides my decision to animate radius and transparency using periodic sine-wave motion.
+
 ![Image of the breathing circle](./README_Images/breath_circle.gif)
 ## Technical Explanation
 1. **Using sin(), rotate(), scale() and frameCount to make canvas harmonic motion** 
@@ -54,6 +56,9 @@ Use sine waves to rhythmically change the size and transparency of each ring.
 4. **Changes made to the group code**
 
 To change the falling mandalas into a time-based animation, I implement the following modifications to the group work:
-- Modify drawCircle(), drawAura() and drawDotMandala() to accept animated parameters (currentR, alphaPulse).Change ring.r to currentR.
+- Modify drawCircle(), drawAura(), and drawDotMandala() to accept animated parameters (currentR, alphaPulse).Change ring.r to currentR.
 - Add a low-alpha background to have a visible trail.
-- Translate the coordinate system to the center of the ring.Replace ring.x and ring.y with 0.
+- Translate the coordinate system to the center of the ring. Replace ring.x and ring.y with 0, and ring.r with currentR.
+
+The techniques used in this sketch come from the class and the p5.js website.
+ 
