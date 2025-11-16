@@ -30,23 +30,25 @@ function draw() {
   push();
 
   //===== New: This part is to add canvas effect =====
-  translate(width/2, height/2);  //Move the original position to the centre of the canvas
+  translate(width/2, height/2);  //New: Move the original position to the centre of the canvas
    
-   // Let the canvas harmonic rotate over time
+   // New: Let the canvas harmonic rotate over time
    // Reference:https://editor.p5js.org/ks1439/sketches/jiL7AeR0T
+   // Reference:https://p5js.org/reference/p5/sin/
    let harmonicRate1 = frameCount/550 * TWO_PI;
    let angle1 = sin(harmonicRate1) * 0.5;
    rotate(angle1);
 
-   // Zoom canvas to create a jumping effect
+   // New: Zoom canvas to create a jumping effect
    let rate = frameCount/200 * TWO_PI;
-   let s = 1 + 0.1 * sin(rate * 1.5);
+   let s = 1 + 0.05 * sin(rate * 1.5);
    scale(s);
    
-   // Move the position back
+   // New: Move the position back
    translate(-width/2, -height/2);
 
    let i = 0;
+
   for (let ring of rings){
     // Fall progress t (0-1) : Used to control the scaling and fading of halos
     // The circular figure starts from the top of the canvas and approaches 1 after passing through it
@@ -54,17 +56,17 @@ function draw() {
     //constrain() It is used to limit the calculated progress value within the range of 0 to 1 to avoid exceeding the interval.
     // reference：https://p5js.org/reference/#/p5/constrain
 
-    //===== New: Make the circle sway slightly with time respectively =====
+    //===== New: This part is to make the circle effect with time respectively =====
     let time = millis() * 0.001;  // This function is to get the current time with second. // Reference:https://p5js.org/reference/p5/millis/
     let sway = sin(time * 2 + ring.x * 0.05) * 1.2;
     ring.x += sway;
 
-    // Add size pulse effect
+    // New: Add size pulse effect
     let pulseRate = frameCount/160 * TWO_PI;
     let pulse = 1 + 0.3 * sin(pulseRate + i * 0.6);  // Use i to make circles pulse respectively 
     let currentR = ring.r * pulse;
 
-    // Make transparency change over time
+    // New: Make transparency change over time
     let alphaRate = frameCount/315 * TWO_PI;
     let alphaPulse = map(
       sin(alphaRate + i * 0.6),
@@ -86,13 +88,13 @@ function draw() {
     } else {
       drawCircle(ring, currentR, alphaPulse);
     }
-    pop();
+    pop();  //New: Referesh
     i++;
 
     // Update the falling position
     fallAndReset(ring);     
   }
-  pop();  //Refresh canvas state
+  pop();  //New: Refresh canvas state
 }
 
 //The halo amplifies and fades out as it falls
@@ -191,14 +193,15 @@ function windowResized(){
   generateLayout();
 }
 
-// ===== Change: Update the size and transparency over time with currentR and alphaPulse in the following part =====
+// ===== Change: To update the size and transparency over time with currentR and alphaPulse in the following part =====
+// Specific change: Add currenR and alphaPulse to the circle, remove the ring.x and ring.y, change ring.r into currentR
 // ===== draw a Spokes type circle (outer ring/spoke/middle ring/lattice/center cap) =====
 function drawCircle(ring, currentR, alphaPulse){
   // outer ring
   strokeWeight(max(2, currentR * 0.08));
   stroke(ring.palette[0], alphaPulse);
   noFill();
-  circle(0, 0, currentR * 2);
+  circle(0, 0, currentR * 2);  
 
   // spoke
   let nSpokes = 15;  //Number of lines
