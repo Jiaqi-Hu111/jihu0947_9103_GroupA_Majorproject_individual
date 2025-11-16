@@ -29,12 +29,12 @@ The pulsing size changes and transparency fluctuations of each ring are inspired
 ## Technical Explanation
 1. **Using sin(), rotate(), scale() and frameCount to make canvas harmonic motion** 
 
-This part is inspired by the sketch of p5.js to realize the canvas oscillation of rotation and jumping scaling. Function sin() outputs values between 1 and -1, producing a natural periodic motion. Feeding frameCount into sin() generates continuous harmonic animation over time.
+This part is inspired by the sketch of p5.js to realize the canvas oscillation of rotation and jumping scaling. Function sin() outputs values between 1 and -1, producing a natural periodic motion. Feeding frameCount into sin() and using rotate() and scale() to generate continuous harmonic animation over time.
 [Reference Link](https://editor.p5js.org/ks1439/sketches/jiL7AeR0T)
 
-2. **Using millis() to achieve horizontal sway overtime**
+2. **Using millis() with sin() to achieve circles horizontal sway over time**
 
-Function millis() provides time in milliseconds, ensuring movement is independent of frame rate. This produces a smoother, natural sway than using frameCount alone.
+Function millis() provides time in milliseconds, ensuring movement is independent of frame rate. This produces a smoother, natural sway of circles than using frameCount alone.
 [Reference Link](https://p5js.org/reference/p5/millis/)
 
 3. **Size pulsing and transparency change over time using sin() and frameCount**
@@ -44,6 +44,6 @@ Use sine waves to rhythmically change the size and transparency of each ring.
 4. **Changes made to the group code**
 
 To change the falling mandalas into a time-based animation, I implement the following modifications to the group work:
-- Modify drawCircle(), drawAura() and drawDotMandala() to accept animated parameters (currentR, alphaPulse).
+- Modify drawCircle(), drawAura() and drawDotMandala() to accept animated parameters (currentR, alphaPulse).Change ring.r to currentR.
 - Add a low-alpha background to have a visible trail.
-- Translate the coordinate system to the center of the ring.
+- Translate the coordinate system to the center of the ring.Replace ring.x and ring.y with 0.
