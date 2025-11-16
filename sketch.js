@@ -25,7 +25,7 @@ function setup() {
 }
 
 function draw() {
-  // Change: Set the background with an alpha value of 10 to have a visible trail,
+  // Change: Set the background with an alpha value of 10 to have a visible trail
   background(0, 10);
   push();
 
@@ -36,12 +36,12 @@ function draw() {
    // Reference:https://editor.p5js.org/ks1439/sketches/jiL7AeR0T
    // Reference:https://p5js.org/reference/p5/sin/
    let harmonicRate1 = frameCount/550 * TWO_PI;
-   let angle1 = sin(harmonicRate1) * 0.5;
+   let angle1 = sin(harmonicRate1) * 0.5;  //0.5 controls rotate angle
    rotate(angle1);
 
    // New: Zoom canvas to create a jumping effect
    let rate = frameCount/200 * TWO_PI;
-   let s = 1 + 0.05 * sin(rate * 1.5);
+   let s = 1 + 0.05 * sin(rate * 1.5);  //0.05 controls the zoom range; 1.5 controls the zoom speed
    scale(s);
    
    // New: Move the position back
@@ -58,12 +58,12 @@ function draw() {
 
     //===== New: This part is to make the circle effect with time respectively =====
     let time = millis() * 0.001;  // This function is to get the current time with second. // Reference:https://p5js.org/reference/p5/millis/
-    let sway = sin(time * 2 + ring.x * 0.05) * 1.2;
+    let sway = sin(time * 2 + ring.x * 0.05) * 1.2;  //2 controls frequency; 0.05 makes each circle out of sync; 1.2 controls the sway range
     ring.x += sway;
 
     // New: Add size pulse effect
     let pulseRate = frameCount/160 * TWO_PI;
-    let pulse = 1 + 0.3 * sin(pulseRate + i * 0.6);  // Use i to make circles pulse respectively 
+    let pulse = 1 + 0.3 * sin(pulseRate + i * 0.6);  // Use i to make circles pulse respectively //0.3 controls how much bigger; 0.6 makes animation out of sync
     let currentR = ring.r * pulse;
 
     // New: Make transparency change over time
@@ -77,7 +77,7 @@ function draw() {
     // Draw halos 
     drawAura(ring, t, currentR, alphaPulse);
 
-    //Make the circle sway itself
+    //New: Make the circle sway itself
     push();
     translate(ring.x, ring.y);
     rotate(sin( time * 3 + ring.y * 0.01) * 0.15);
@@ -111,7 +111,7 @@ function drawAura(ring, t, currentR, alphaPulse) {
   const rr = currentR * (1 + 1.6 * t);
 
   noStroke();
-  fill(red(c), green(c), blue(c), alpha);
+  fill(red(c), green(c), blue(c), alpha);  //This function refers to p5.js website.
   circle(ring.x, ring.y, rr * 2);
 }
 
