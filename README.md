@@ -12,11 +12,17 @@ All animations are time-based, driven by frameCount with sin().
 # Individual Design Details (Time-Based)
 ## Differences from the Group Work
 In my individual submission, I animate several time-based properties of the work, making my version different from those of other group members.
+
 - canvas level 
+
 I animate the entire canvas, adding harmonic rotation and a sine-wave-driven scaling effect.
+
 - shape level 
+
 I add independent size pulses and transparency pulses to each circle.
+
 - position level 
+
 I use millis() to add a horizontal sway and to make each ring rotate slightly as it falls.
 In general, the time-based animation effects are enriched on the basis of group work, forming different visual feelings.
 ## Animation Inspiration
